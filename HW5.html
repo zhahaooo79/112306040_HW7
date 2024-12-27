@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            width: 900px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Left Panel */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            width: 330px;
+            height: auto;
+        }
+
+        /* Photo Panel */
+        .photo-panel {
+            background-image: url('your-photo.jpg'); /* Replace with your photo file */
+            background-position: center;
+            background-size: cover;
+            height: 200px;
+        }
+
+        /* Text Content */
+        .text-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .text-content h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .text-content section {
+            margin-bottom: 20px;
+        }
+
+        .text-content .nccu-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Right Panel */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            width: 540px;
+            height: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Education Section (Timeline) */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .year {
+            font-weight: bold;
+        }
+
+        .description {
+            margin-left: 10px;
+        }
+
+        /* Favorite Music Section */
+        .favorite-music ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .favorite-music li {
+            flex: 1 1 calc(50% - 15px);
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .favorite-music img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        .favorite-music a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .favorite-music a:hover {
+            color: #007BFF;
+        }
+
+        /* Add Music Form */
+        .add-music-form {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .add-music-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-music-form button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-music-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="photo-panel"></div>
+            <div class="text-content">
+                <section class="about-me">
+                    <h2>About Me</h2>
+                    <p id="name-display">Love -41</p>
+                    <button id="edit-name-button">Edit</button>
+                </section>
+                <section class="contact-info">
+                    <h2>Contact Info</h2>
+                    <p>Email: 112306040@g.nccu.edu.tw</p>
+                    <p>Phone: 123-456-7890</p>
+                </section>
+                <div class="nccu-icon">
+                    <img src="nccu-icon.png" alt="NCCU Icon">
+                </div>
+            </div>
+        </div>
+        <div class="right-panel">
+            <section class="education">
+                <h2>Education</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="year">2023</span>
+                        <p class="description">Bachelor of Science in Computer Science</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2020</span>
+                        <p class="description">High School Diploma</p>
+                    </div>
+                </div>
+            </section>
+            <section class="favorite-music">
+                <h2>Favorite Music</h2>
+                <ul id="music-list">
+                    <li>
+                        <a href="https://open.spotify.com/track/45J4avUb9Ni0bnETYaYFVJ?si=983cb7d31ce44bc4">
+                            <img src="luther.jpg" alt="Album 1">
+                            luther
+                        </a>
+                    </li>
+                </ul>
+                <button id="add-music-button">Add Music</button>
+                <div class="add-music-form" id="add-music-form">
+                    <input type="text" id="music-name" placeholder="Music Name">
+                    <input type="text" id="music-link" placeholder="Music Link">
+                    <input type="file" id="music-image" accept="image/png, image/jpeg">
+                    <button id="submit-music">Submit</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Edit Name Functionality
+        const editButton = document.getElementById("edit-name-button");
+        const nameDisplay = document.getElementById("name-display");
+
+        editButton.addEventListener("click", () => {
+            if (editButton.textContent === "Edit") {
+                const currentName = nameDisplay.textContent;
+                nameDisplay.innerHTML = `<input type='text' id='name-input' value='${currentName}'>`;
+                editButton.textContent = "Save";
+            } else {
+                const nameInput = document.getElementById("name-input");
+                nameDisplay.textContent = nameInput.value;
+                editButton.textContent = "Edit";
+            }
+        });
+
+        // Add Music Functionality
+        const addMusicButton = document.getElementById("add-music-button");
+        const addMusicForm = document.getElementById("add-music-form");
+        const submitMusicButton = document.getElementById("submit-music");
+        const musicList = document.getElementById("music-list");
+
+        addMusicButton.addEventListener("click", () => {
+            addMusicForm.style.display = addMusicForm.style.display === "none" ? "flex" : "none";
+        });
+
+        submitMusicButton.addEventListener("click", () => {
+            const musicName = document.getElementById("music-name").value;
+            const musicLink = document.getElementById("music-link").value;
+            const musicImageInput = document.getElementById("music-image");
+
+            if (musicName && musicLink && musicImageInput.files.length > 0) {
+                const musicImage = URL.createObjectURL(musicImageInput.files[0]);
+
+                const newMusicItem = document.createElement("li");
+                newMusicItem.innerHTML = `
+                    <a href="${musicLink}" target="_blank">
+                        <img src="${musicImage}" alt="${musicName}">
+                        ${musicName}
+                    </a>
+                `;
+                musicList.appendChild(newMusicItem);
+
+                // Clear form and hide it
+                document.getElementById("music-name").value = "";
+                document.getElementById("music-link").value = "";
+                musicImageInput.value = "";
+                addMusicForm.style.display = "none";
+            } else {
+                alert("Please fill in all fields and upload an image.");
+            }
+        });
+    </script>
+</body>
+</html>
